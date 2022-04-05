@@ -1,0 +1,46 @@
+name,rating,genre,year,released,score,votes,director,writer,star,country,budget,gross,company,runtime
+Xanadu,PG,Fantasy,1980,"August 8, 1980 (United States)",5.3,12000.0,Robert Greenwald,Richard Christian Danus,Olivia Newton-John,United States,20000000.0,22762571.0,Universal Pictures,96.0
+Xanadu,PG,Fantasy,1980,"August 8, 1980 (United States)",5.3,12000.0,Robert Greenwald,Richard Christian Danus,Olivia Newton-John,United States,20000000.0,22762571.0,Universal Pictures,96.0
+Cat People,R,Fantasy,1982,"April 2, 1982 (United States)",6.2,20000.0,Paul Schrader,DeWitt Bodeen,Nastassja Kinski,United States,18000000.0,7000000.0,RKO Pictures,118.0
+Something Wicked This Way Comes,PG,Fantasy,1983,"April 29, 1983 (United States)",6.8,8600.0,Jack Clayton,Ray Bradbury,Jason Robards,United States,19000000.0,8400000.0,Walt Disney Productions,95.0
+Fright Night,R,Fantasy,1985,"August 2, 1985 (United States)",7.1,63000.0,Tom Holland,Tom Holland,Chris Sarandon,United States,9000000.0,24922237.0,Columbia Pictures,106.0
+The Bride,PG-13,Fantasy,1985,"August 16, 1985 (United States)",5.3,2900.0,Franc Roddam,Lloyd Fonvielle,Sting,United Kingdom,13000000.0,3558669.0,Colgems Productions Ltd.,118.0
+A Nightmare on Elm Street 3: Dream Warriors,R,Fantasy,1987,"February 27, 1987 (United States)",6.6,73000.0,Chuck Russell,Wes Craven,Heather Langenkamp,United States,4500000.0,44793222.0,New Line Cinema,96.0
+Creepshow 2,R,Fantasy,1987,"May 1, 1987 (United States)",6.1,23000.0,Michael Gornick,Stephen King,George Kennedy,United States,3500000.0,14000000.0,New World Pictures,92.0
+The Gate,PG-13,Fantasy,1987,"May 15, 1987 (United States)",6.1,16000.0,Tibor TakÃ¡cs,Michael Nankin,Stephen Dorff,Canada,,13539458.0,New Century Entertainment,85.0
+Maid to Order,PG,Fantasy,1987,"July 31, 1987 (United States)",5.5,3300.0,Amy Holden Jones,Amy Holden Jones,Ally Sheedy,United States,3000000.0,9868521.0,Vista Organization,93.0
+Child's Play,R,Fantasy,1988,"November 9, 1988 (United States)",6.6,91000.0,Tom Holland,Don Mancini,Catherine Hicks,United States,9000000.0,44196684.0,United Artists,87.0
+Pumpkinhead,R,Fantasy,1988,"January 13, 1989 (United States)",6.2,21000.0,Stan Winston,Ed Justin,Lance Henriksen,United States,3500000.0,4385516.0,De Laurentiis Entertainment Group (DEG),86.0
+The Serpent and the Rainbow,R,Fantasy,1988,"February 5, 1988 (United States)",6.5,23000.0,Wes Craven,Wade Davis,Bill Pullman,United States,7000000.0,19595031.0,Universal Pictures,98.0
+Lady in White,PG-13,Fantasy,1988,"April 22, 1988 (United States)",6.7,6400.0,Frank LaLoggia,Frank LaLoggia,Lukas Haas,United States,4700000.0,1705139.0,New Sky Communications Inc.,113.0
+Pet Sematary,R,Fantasy,1989,"April 21, 1989 (United States)",6.6,97000.0,Mary Lambert,Stephen King,Dale Midkiff,United States,11500000.0,57470138.0,Paramount Pictures,103.0
+A Nightmare on Elm Street 5: The Dream Child,R,Fantasy,1989,"August 11, 1989 (United States)",5.1,42000.0,Stephen Hopkins,Wes Craven,Robert Englund,United States,6000000.0,22168359.0,New Line Cinema,89.0
+"I, Madman",R,Fantasy,1989,"April 7, 1989 (United States)",6.0,2900.0,Tibor TakÃ¡cs,David Chaskin,Jenny Wright,Canada,,,Trans World Entertainment (TWE),89.0
+Gate 2: The Trespassers,R,Fantasy,1990,"February 28, 1992 (United States)",4.8,2000.0,Tibor TakÃ¡cs,Michael Nankin,Louis Tripp,Canada,6500000.0,2032973.0,Vision PDG,93.0
+Freddy's Dead: The Final Nightmare,R,Fantasy,1991,"September 13, 1991 (United States)",4.9,43000.0,Rachel Talalay,Wes Craven,Robert Englund,United States,11000000.0,34872033.0,New Line Cinema,89.0
+Sleepwalkers,R,Fantasy,1992,"April 10, 1992 (United States)",5.3,21000.0,Mick Garris,Stephen King,Brian Krause,United States,15000000.0,30524763.0,Columbia Pictures,91.0
+Pet Sematary II,R,Fantasy,1992,"August 28, 1992 (United States)",4.9,20000.0,Mary Lambert,Richard Outten,Edward Furlong,United States,8000000.0,17092453.0,Paramount Pictures,100.0
+Jason Goes to Hell: the Final Friday,,Fantasy,1993,"August 13, 1993 (United States)",4.2,29000.0,Adam Marcus,Jay Huguely,John D. LeMay,United States,3000000.0,15935068.0,New Line Cinema,87.0
+Cronos,R,Fantasy,1993,May 1994 (United States),6.7,28000.0,Guillermo del Toro,Guillermo del Toro,Federico Luppi,Mexico,2000000.0,621392.0,CNCAIMC,94.0
+New Nightmare,R,Fantasy,1994,"October 14, 1994 (United States)",6.5,53000.0,Wes Craven,Wes Craven,Heather Langenkamp,United States,8000000.0,19721741.0,New Line Cinema,112.0
+The City of Lost Children,R,Fantasy,1995,"December 15, 1995 (United States)",7.5,66000.0,Marc Caro,Gilles Adrien,Ron Perlman,France,18000000.0,1781465.0,Constellation,112.0
+Hideaway,R,Fantasy,1995,"March 3, 1995 (United States)",5.3,6400.0,Brett Leonard,Dean R. Koontz,Jeff Goldblum,United States,15000000.0,12201255.0,TriStar Pictures,106.0
+Thinner,R,Fantasy,1996,"October 25, 1996 (United States)",5.8,29000.0,Tom Holland,Stephen King,Robert John Burke,United States,8500000.0,15315484.0,Paramount Pictures,93.0
+Wishmaster,R,Fantasy,1997,"September 19, 1997 (United States)",5.8,21000.0,Robert Kurtzman,Peter Atkins,Tammy Lauren,United States,5000000.0,15738769.0,Image Organization,90.0
+The Night Flier,R,Fantasy,1997,"February 6, 1998 (United States)",6.0,9900.0,Mark Pavia,Stephen King,Miguel Ferrer,United States,1000000.0,125397.0,New Amsterdam Entertainment,94.0
+Dark City,R,Fantasy,1998,"February 27, 1998 (United States)",7.6,191000.0,Alex Proyas,Alex Proyas,Rufus Sewell,Australia,27000000.0,27200316.0,Mystery Clock Cinema,100.0
+Sleepy Hollow,R,Fantasy,1999,"November 19, 1999 (United States)",7.3,338000.0,Tim Burton,Washington Irving,Johnny Depp,United States,100000000.0,206071502.0,Paramount Pictures,105.0
+The Haunting,PG-13,Fantasy,1999,"July 23, 1999 (United States)",5.0,73000.0,Jan de Bont,David Self,Liam Neeson,United States,80000000.0,177311151.0,Dreamworks Pictures,113.0
+Vanilla Sky,R,Fantasy,2001,"December 14, 2001 (United States)",6.9,253000.0,Cameron Crowe,Alejandro AmenÃ¡bar,Tom Cruise,United States,68000000.0,203388341.0,Paramount Pictures,136.0
+Thir13en Ghosts,R,Fantasy,2001,"October 26, 2001 (United States)",5.6,81000.0,Steve Beck,Robb White,Tony Shalhoub,United States,42000000.0,68467960.0,Warner Bros.,91.0
+Darkness Falls,PG-13,Fantasy,2003,"January 24, 2003 (United States)",5.0,31000.0,Jonathan Liebesman,Joe Harris,Chaney Kley,United States,11000000.0,47488536.0,Revolution Studios,86.0
+Stay Alive,PG-13,Fantasy,2006,"March 24, 2006 (United States)",5.1,31000.0,William Brent Bell,William Brent Bell,Jon Foster,United States,7000000.0,27298695.0,Hollywood Pictures,85.0
+1408,PG-13,Fantasy,2007,"June 22, 2007 (United States)",6.8,260000.0,Mikael HÃ¥fstrÃ¶m,Matt Greenberg,John Cusack,United States,25000000.0,132963417.0,Dimension Films,104.0
+Diary of the Dead,R,Fantasy,2007,"February 22, 2008 (United States)",5.6,46000.0,George A. Romero,George A. Romero,Michelle Morgan,United States,2000000.0,5540941.0,Artfire Films,95.0
+Pontypool,Not Rated,Fantasy,2008,"September 18, 2009 (Turkey)",6.6,30000.0,Bruce McDonald,Tony Burgess,Stephen McHattie,Canada,1500000.0,32118.0,Ponty Up Pictures,93.0
+Don't Be Afraid of the Dark,R,Fantasy,2010,"August 26, 2011 (United States)",5.6,47000.0,Troy Nixey,Guillermo del Toro,Katie Holmes,United States,25000000.0,38269529.0,Miramax,99.0
+Red Riding Hood,PG-13,Fantasy,2011,"March 11, 2011 (United States)",5.5,109000.0,Catherine Hardwicke,David Leslie Johnson-McGoldrick,Amanda Seyfried,United States,42000000.0,90260376.0,Warner Bros.,100.0
+Mama,PG-13,Fantasy,2013,"January 18, 2013 (United States)",6.2,172000.0,Andy Muschietti,Andy Muschietti,Jessica Chastain,Canada,15000000.0,146428180.0,Universal Pictures,100.0
+Suspiria,R,Fantasy,2018,"November 2, 2018 (United States)",6.7,66000.0,Luca Guadagnino,Dario Argento,ChloÃ« Grace Moretz,Italy,20000000.0,7942093.0,Frenesy Film Company,152.0
+The Prodigy,R,Fantasy,2019,"February 8, 2019 (United States)",5.9,24000.0,Nicholas McCarthy,Jeff Buhler,Taylor Schilling,United States,6000000.0,21150265.0,Orion Pictures,92.0
+K-12,Not Rated,Fantasy,2019,"September 5, 2019 (United States)",6.5,2500.0,Melanie Martinez,Melanie Martinez,Melanie Martinez,United States,5000000.0,359377.0,Atlantic Records,96.0
