@@ -31,13 +31,15 @@ import csv
 
 # Input file location
 input = './Data/movies.csv'
+# Value to split by
+value = 'years'
 # Output location of the new files
-output = './Data/Genres/'
+output = './Data/'+value.capitalize()+'/'
 
 # Keep a record of the field names in the original file
 field_names = []
 # Dictionary to hold all the movies by genre
-genreDict = {}
+columnDict = {}
 
 """
     Opens the input file
@@ -57,29 +59,31 @@ with open(input, mode='r', encoding="Latin1") as file:
         if line_count == 0:
             field_names = csv_reader.fieldnames
             line_count += 1
+
+        current = row[value][row[value].find('/')+1:]
         # if the current movies genre doesnt exist in dictionary, add it
-        if(row["genre"] not in genreDict):
-            genreDict[row["genre"]] = [row]
+        if(current not in columnDict):
+            columnDict[current] = [row]
         # add movie to appropriate area in the dictionary
-        genreDict[row["genre"]].append(row)
+        columnDict[current].append(row)
         line_count += 1
 
     # Output to terminal the results of parsing input file
     print(f'Processed {line_count} lines.')
     print(f'Field names are: {field_names}')
-    print(f'Genres gathered {genreDict.keys()}.')
+    print(f'Values gathered {columnDict.keys()}.')
 
 """
     Loops through the dictionary
     Creates csv files for each of the genres
     Adds movies to the newly created csv files based on genre
 """
-for genre in genreDict:
-    print(f'Writing moves in genre: {genre}')
-    with open(output + genre + '.csv', mode='w') as file:
+for column in columnDict:
+    print(f'Writing movies in genre: {column}')
+    with open(output + column + '.csv', mode='w', encoding="Latin1") as file:
         writer = csv.DictWriter(file, fieldnames=field_names)
         # write the header into the new file
         writer.writeheader()
         # write all the movies in the genres value pair
-        for row in genreDict[genre]:
+        for row in columnDict[column]:
             writer.writerow(row)

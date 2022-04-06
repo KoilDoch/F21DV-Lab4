@@ -6,7 +6,6 @@
 */
 
 import { BarChart } from "./BarChart.js";
-import { LineChart } from "./LineChart.js";
 
 /**
  * This function creates an object which manages the data used for the charts.
@@ -43,7 +42,8 @@ export function DataMap() {
     let obj = {};           // used to return a usable object
     let dataRaw = [];       // the unfiltered data
     let categories = [];    // the list of possible categories to filter by
-    let dataMap = [];       // the filtered data
+    let dataMap = [];       // the filtered data into key value pairs
+    let dataSorted = [];    // the data grouped (if needed)
     let chart, x, y;
 
     const ChartType = {
@@ -56,21 +56,33 @@ export function DataMap() {
      *      Takes the data from a url and puts it into a 'raw' list.
      *      Afterwords calls functions to set up components based on this data
      */
-    obj.SetData = (dataURL, out) => {
-            console.log('Getting Data...');
-            // get the data from url and push it into the raw array
-            d3.csv(dataURL, (d) => {
-                dataRaw.push(d);
-            }).then(() => { 
-                console.log('Data Recieved!');
+    obj.SetData = async (dataURL, out, sortFunction) => {
+            //return new Promise((res) => {
+                console.log('Getting Data...');
+                // get the data from url and push it into the raw array
+                d3.csv(dataURL, (d) => {
+                    dataRaw.push(d);
+                }).then(() => { 
+                    // group the data by genre
+                    dataSorted = d3.group(dataRaw, sortFunction);
+    
+                    console.log('Data Recieved!');
+                    console.log(dataSorted);
+                    obj.FilterData();
+                    obj.CreateChart();
+    
+                    //res(dataSorted);
+                })
+           // })
+    }
 
-                // get the categories of the data
-                obj.SetCategories();
-                // create an interactive element from data
-                obj.CreateYDropDown();
-                // create a visual representation of the data
-                obj.CreateChart(out);
-            })
+    obj.SortData = () => {
+        dataMap.sort((a,b) => {
+            return b.value - a.value;
+        });
+        console.log(dataMap);
+
+        chart.DrawChart();
     }
 
     /**
@@ -81,25 +93,20 @@ export function DataMap() {
     obj.SetCategories = () => {
         console.log('Setting Categories...');
 
-        // temporary pin the x always on location
-        x = 'location';
-
         // get list of categories for this dataset
         for(let cat in dataRaw[0]) {
             categories.push(cat);
         }
 
-        // the first 4 of the dataset are identifiers so remove
-        // these charts just uses the location as identifier
-        categories = categories.slice(4);
-
+        x = categories[0]
         // set the current y to the first category
-        y = categories[0];
+        y = categories[5];
 
         console.log('Categories Set!');
+        console.log(categories);
 
         // filter by location, using the first category
-        obj.FilterData('location', categories[0]);
+        obj.FilterData('name', categories[5]);
     }
 
     /**
@@ -159,7 +166,7 @@ export function DataMap() {
      obj.CreateChart = (out) => {
         // create a new chart
         chart = BarChart();
-        chart.CreateBarChart(dataMap, out);
+        chart.CreateBarChart(dataMap);
     }
 
     /**
@@ -169,26 +176,31 @@ export function DataMap() {
     *          key: x value
     *          value: y value
     */
-     obj.FilterData = (x , y) => {
+     obj.FilterData = () => {
         console.log('Filtering Data...');
 
-        // create a dictionary with key: x, value: y, with an initial empty array
-        dataMap = dataRaw.reduce((out, d) => {
-            // callback function
+        for(const [genre,movies] of dataSorted) {
+            let sum = 0;
+            console.log(movies);
+            movies.forEach(
+                d => {
+                    sum += +d['score']
+                    sum = parseFloat(sum.toFixed(2));
+                }
+            );
 
-            // only allow if neither is undefined
-            if(d[x] && d[y]) {
-                out.push({
-                    key: d[x],
-                    value: d[y]
-                });
-            }
+            console.log(sum);
+            let average = sum / movies.length;
+            average = parseFloat(average.toFixed(2));
 
-            // return
-            return out;
-        }, []);
-        
+            dataMap.push({
+                key: genre,
+                value: average
+            });
+        }
+
         console.log(`Data Filtered: x[${x}] y[${y}]`);
+        console.log(dataMap);
     }
 
     /**
