@@ -11,164 +11,225 @@ export function BarChart() {
     let margin = {top: 20, right: 30, bottom: 30, left: 40};
     let width = 800 - margin.left - margin.right;
     let height = 200 - margin.top - margin.bottom;
-    let data = [
-        {
-            key: 'val1',
-            value: [
-                {source: 's1',
-                 value: 100},
-                 {source: 's2',
-                 value: 50},
-                 {source: 's3',
-                 value: 25}
-            ]
-        },
-        {
-            key: 'val2',
-            value: [
-                {source: 's1',
-                 value: 121},
-                 {source: 's2',
-                 value: 60.5},
-                 {source: 's3',
-                 value: 30.25}
-            ]
-        },
-        {
-            key: 'val3',
-            value: [
-                {source: 's1',
-                 value: 25},
-                 {source: 's2',
-                 value: 12.5},
-                 {source: 's3',
-                 value: 6.25}
-            ]
-        },
-        {
-            key: 'val4',
-            value: [
-                {source: 's1',
-                 value: 70},
-                 {source: 's2',
-                 value: 35},
-                 {source: 's3',
-                 value: 17.5}
-            ]
-        },
-        {
-            key: 'val5',
-            value: [
-                {source: 's1',
-                 value: 150},
-                 {source: 's2',
-                 value: 75},
-                 {source: 's3',
-                 value: 37.5}
-            ]
-        }
-    ];
+    let data = {};
+    let dataSorted = {};
+    //let data;
+    /**
+     * Data format:
+     * Data = [
+     *    {
+     *      Key: NAME_OF_CATEGORY,
+     *      value: {
+     *          source: FIRST_SOURCE_NAME
+     *          value: NUMERICAL_VALUE
+     *      }
+     *    },
+     *    {
+     *      ...
+     *    }
+     * ]
+     */
 
-    let data1 = [
-        {
-            key: 'val1',
-            value: [
-                {source: 's1',
-                 value: 50},
-                 {source: 's2',
-                 value: 25},
-                 {source: 's3',
-                 value: 10},
-                 {source: 's4',
-                 value: 129.5}
-            ]
-        },
-        {
-            key: 'val2',
-            value: [
-                {source: 's1',
-                 value: 25},
-                 {source: 's2',
-                 value: 69.5},
-                 {source: 's3',
-                 value: 58.25},
-                 {source: 's4',
-                 value: 110.5}
-            ]
-        },
-        {
-            key: 'val3',
-            value: [
-                {source: 's1',
-                 value: 53},
-                 {source: 's2',
-                 value: 62.5},
-                 {source: 's3',
-                 value: 12.25},
-                 {source: 's4',
-                 value: 91.5}
-            ]
-        },
-        {
-            key: 'val4',
-            value: [
-                {source: 's1',
-                 value: 43},
-                 {source: 's2',
-                 value: 15},
-                 {source: 's3',
-                 value: 62.5},
-                 {source: 's4',
-                 value: 10.5}
-            ]
-        },
-        {
-            key: 'val5',
-            value: [
-                {source: 's1',
-                 value: 13},
-                 {source: 's2',
-                 value: 16},
-                 {source: 's3',
-                 value: 15.5},
-                 {source: 's4',
-                 value: 29.51}
-            ]
-        },
-        {
-            key: 'val6',
-            value: [
-                {source: 's1',
-                 value: 16},
-                 {source: 's2',
-                 value: 23.5},
-                 {source: 's3',
-                 value: 89.25},
-                 {source: 's4',
-                 value: 19.25}
-            ]
-        }
-    ];
+    
+    //TEST DATA
+    // let data = [
+    //     {'col1' : 'v1',
+    //      'col2' : 100
+    //     },
+    //     {'col1' : 'v1',
+    //      'col2' : 100
+    //     },
+    //     {'col1' : 'v1',
+    //      'col2' : 100
+    //     },
+    //     {'col1' : 'v1',
+    //      'col2' : 100
+    //     },
+    //     {'col1' : 'v1',
+    //      'col2' : 100
+    //     },
+    // ] 
+    // let data1 = [
+    //     {'val1' : 25},
+    //     {'val2' : 30},
+    //     {'val3' : 6},
+    //     {'val4' : 17},
+    //     {'val5' : 37},
+    // ]
+    // let data2 = [
+    //     {'val1' : 50},
+    //     {'val2' : 60},
+    //     {'val3' : 12},
+    //     {'val4' : 35},
+    //     {'val5' : 75},
+    // ]
+
+    // let groups = {
+    //     'source 1' : data,
+    //     'source 2' : data1,
+    //     'source 3' : data2
+    // };
+    //let data = {
+    //     'val1' : [
+    //             {source: 's1',
+    //              value: 100},
+    //              {source: 's2',
+    //              value: 50},
+    //              {source: 's3',
+    //              value: 25}
+    //     ],
+    //     'val2' : [
+    //             {source: 's1',
+    //              value: 121},
+    //              {source: 's2',
+    //              value: 60.5},
+    //              {source: 's3',
+    //              value: 30.25}
+    //     ],
+    //     'val3' : [
+    //             {source: 's1',
+    //              value: 25},
+    //              {source: 's2',
+    //              value: 12.5},
+    //              {source: 's3',
+    //              value: 6.25}
+    //     ],
+    //     'val4' : [
+    //             {source: 's1',
+    //              value: 70},
+    //              {source: 's2',
+    //              value: 35},
+    //              {source: 's3',
+    //              value: 17.5}
+    //     ],
+    //     'val5' : [
+    //             {source: 's1',
+    //              value: 150},
+    //              {source: 's2',
+    //              value: 75},
+    //              {source: 's3',
+    //              value: 37.5}
+    //     ]
+    // };
+
+    // let data1 = {
+    //     'val1' : [
+    //         {source: 's1',
+    //         value: 50},
+    //         {source: 's2',
+    //         value: 25},
+    //         {source: 's3',
+    //         value: 10},
+    //         {source: 's4',
+    //         value: 129.5}
+    //     ],
+    //     'val2' : [
+    //         {source: 's1',
+    //         value: 25},
+    //         {source: 's2',
+    //         value: 69.5},
+    //         {source: 's3',
+    //         value: 58.25},
+    //         {source: 's4',
+    //         value: 110.5}
+    //     ],
+    //     'val3' : [
+    //         {source: 's1',
+    //         value: 53},
+    //         {source: 's2',
+    //         value: 62.5},
+    //         {source: 's3',
+    //         value: 12.25},
+    //         {source: 's4',
+    //         value: 91.5}
+    //     ],
+    //     'val4' : [
+    //         {source: 's1',
+    //         value: 43},
+    //         {source: 's2',
+    //         value: 15},
+    //         {source: 's3',
+    //         value: 62.5},
+    //         {source: 's4',
+    //         value: 10.5}
+    //     ],
+    //     'val5' : [
+    //         {source: 's1',
+    //         value: 13},
+    //         {source: 's2',
+    //         value: 16},
+    //         {source: 's3',
+    //         value: 15.5},
+    //         {source: 's4',
+    //         value: 29.51}
+    //     ],
+    //     'val6' : [
+    //         {source: 's1',
+    //         value: 16},
+    //         {source: 's2',
+    //         value: 23.5},
+    //         {source: 's3',
+    //         value: 89.25},
+    //         {source: 's4',
+    //         value: 19.25}
+    //     ]
+    // };
 
     let svg, xScale, xAxis, yScale, yAxis, xSubScale, color;
     let keys, values, sources, yExtent;
 
-    obj.ChangeData = () => {
-        data = data1;
-        obj.SetData();
+    obj.AddDataSource = async (input, source) => {
+        return new Promise((res) => {
+            data[source] = []
+
+            d3.csv(input, (d) => {
+                data[source].push(d);
+            }).then(() => { 
+                console.log('Data Recieved!');
+                console.log(
+                        d3.group(
+                            data[source],
+                            d => d.listed_in
+                        )
+                    );
+                
+                // obj.FilterData(sourceName);
+                // obj.CreateChart();
+                res(data);
+            })
+        })
+    }
+
+    // initialises variables for creating the chart
+    obj.CreateBarChart = () => {
+        
+
+        obj.CreateSvg();        // creating display
         obj.DrawChart();
     }
 
-    obj.SetData = () => {
-        keys = data.map(d => d.key);
-        values = data.map(d => d.value);
-        sources = values[0].map(d => d.source);
-        yExtent = d3.extent(values.map(d => d.map(d => d.value)).flat());
+    obj.SortData = (id, sortFunc) => {
+        // console.log('sorting');
+        // console.log(data[id]);
+        // dataSorted[id] = d3.group(data[id], d => {
+        //     console.log(d['type']);
+        // });
+        // console.log(dataSorted);
+    }
+
+    obj.SetData = (input, source) => {
+        
+
+        data = newData;
+        keys = Object.keys(groups);
+        values = Object.values(groups).flat();
+        console.log(values.map(d => d[value]));
+        yExtent = d3.extent(values.map(d => Object.values(d)));
         obj.CreateScales();
     }
 
-    obj.CreateBarChart = (input) => {
-        obj.CreateSvg();
+    obj.ChangeData = () => {
+        data = data1;
         obj.SetData();
         obj.DrawChart();
     }
@@ -198,7 +259,8 @@ export function BarChart() {
     obj.CreateScales = () => {
         // X Axis scale
         xScale = d3.scaleBand()
-        .range([margin.left, width]);
+        .range([margin.left, width])
+        .padding(0.1);
     
         // Y axis scale
         yScale = d3.scaleLinear()
@@ -217,20 +279,19 @@ export function BarChart() {
         yScale.domain([0, yExtent[1]])
         xAxis.transition().duration(1000).call(d3.axisBottom(xScale));
         yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
-        
 
         let groups = svg.selectAll('.SubGroup')
-            .data(data)
+            .data(Object.entries(data))
             .join(
                 // new data
                 enter => {
-                    console.log('Entering!')
+                    console.log('Entering!');
                     enter.append('g')
                     .attr('class', 'SubGroup')
-                    .attr('transform', d => { return 'translate(' + xScale(d.key) + ",0)"})
+                    .attr('transform', d => { return 'translate(' + xScale(d[0]) + ",0)"})
                         .selectAll('rect')
                         .data(d => {
-                            return d.value;
+                            return d[1];
                         })
                         .enter().append('rect')
                             .on('mouseover', DisplayValue)
@@ -253,11 +314,10 @@ export function BarChart() {
                 update => {
                     console.log('Updating!')
                     update
-                        .attr('transform', d => { return 'translate(' + xScale(d.key) + ",0)"})
+                        .attr('transform', d => { return 'translate(' + xScale(d[0]) + ",0)"})
                         .selectAll('rect')
                             .data(d => {
-                                console.log(d);
-                                return d.value;
+                                return d[1];
                             })
                             .join(
                                 enter => {
@@ -268,7 +328,9 @@ export function BarChart() {
                                         return xSubScale(d.source)})
                                     .attr('y', yScale(0))
                                     .attr('width', xSubScale.bandwidth())
-                                    .style('fill', 'blue')
+                                    .style('fill', (d) => {
+                                        return color(d.source);
+                                    })
                                     .transition()
                                     .duration(1000)
                                     .attr('y', (d) => {return yScale(d.value)})
@@ -279,12 +341,10 @@ export function BarChart() {
                                     update.transition()
                                     .duration(1000)
                                     .attr('x', (d) => {
-                                        console.log(d);
                                         return xSubScale(d.source);
                                     })
                                     .attr('width', xSubScale.bandwidth())
                                     .attr('y', (d) => {
-                                        console.log(d);
                                         return yScale(+d.value)})
                                     .attr('height', d => {
                                         return height - yScale(+d.value)});
@@ -307,7 +367,7 @@ export function BarChart() {
                     .remove();
                 }
             )
-        }
+    }
 
     /**
      * Hover function for the bars, displays a value when hovered
@@ -315,7 +375,6 @@ export function BarChart() {
      * @param i - data associated 
      */
      let DisplayValue = (d,i) => {
-        console.log(i);
         //display the value
         svg.append("text") 
             .attr('class', 'val')  

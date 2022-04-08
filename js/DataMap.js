@@ -40,47 +40,82 @@ import { BarChart } from "./BarChart.js";
  */
 export function DataMap() {
     let obj = {};           // used to return a usable object
-    let dataRaw = [];       // the unfiltered data
+    let dataRaw = {};       // the unfiltered data
     let categories = [];    // the list of possible categories to filter by
-    let dataMap = [];       // the filtered data into key value pairs
+    let dataMap = {};       // the filtered data into key value pairs
     let dataSorted = [];    // the data grouped (if needed)
     let chart, x, y;
-
-    const ChartType = {
-        BAR: 'bar',
-        LINE: 'line'
-    }
-
+    
     /**
      *  SetData(dataURL)
      *      Takes the data from a url and puts it into a 'raw' list.
      *      Afterwords calls functions to set up components based on this data
      */
-    obj.SetData = async (dataURL, out, sortFunction) => {
+    obj.SetData = async (sourceName, dataURL, sortFunction) => {
             //return new Promise((res) => {
                 console.log('Getting Data...');
+                dataRaw[sourceName] = {
+                    rows: []
+                }
                 // get the data from url and push it into the raw array
                 d3.csv(dataURL, (d) => {
-                    dataRaw.push(d);
+                    dataRaw[sourceName].rows.push(d)
                 }).then(() => { 
+                    console.log(dataRaw);
+
                     // group the data by genre
-                    dataSorted = d3.group(dataRaw, sortFunction);
+                    dataSorted = d3.group(dataRaw[sourceName].rows, sortFunction);
     
                     console.log('Data Recieved!');
                     console.log(dataSorted);
-                    obj.FilterData();
+
+                    obj.FilterData(sourceName);
                     obj.CreateChart();
-    
                     //res(dataSorted);
                 })
            // })
     }
 
+    /**
+    * FilterData(x , y)
+    *      x and y represent the respective categories for each axis
+    *      This function filters according to them and creates a new dictionary
+    *          key: x value
+    *          value: y value
+    */
+     obj.FilterData = (sourceName) => {
+        console.log('Filtering Data...');
+
+        for(const [genre,movies] of dataSorted) {
+            let sum = 0;
+
+            movies.forEach(
+                d => {
+                    sum += +d['score']
+                    sum = parseFloat(sum.toFixed(2));
+                }
+            );
+
+            let average = sum / movies.length;
+            average = parseFloat(average.toFixed(2));
+
+            dataMap[genre] = [
+                    {
+                        source: sourceName,
+                        value: average
+                    }
+                ]
+        }
+        console.log(`Data Filtered: x[${x}] y[${y}]`);
+        console.log(dataMap);
+    }
+
+        
+
     obj.SortData = () => {
         dataMap.sort((a,b) => {
             return b.value - a.value;
         });
-        console.log(dataMap);
 
         chart.DrawChart();
     }
@@ -167,40 +202,6 @@ export function DataMap() {
         // create a new chart
         chart = BarChart();
         chart.CreateBarChart(dataMap);
-    }
-
-    /**
-    * FilterData(x , y)
-    *      x and y represent the respective categories for each axis
-    *      This function filters according to them and creates a new dictionary
-    *          key: x value
-    *          value: y value
-    */
-     obj.FilterData = () => {
-        console.log('Filtering Data...');
-
-        for(const [genre,movies] of dataSorted) {
-            let sum = 0;
-            console.log(movies);
-            movies.forEach(
-                d => {
-                    sum += +d['score']
-                    sum = parseFloat(sum.toFixed(2));
-                }
-            );
-
-            console.log(sum);
-            let average = sum / movies.length;
-            average = parseFloat(average.toFixed(2));
-
-            dataMap.push({
-                key: genre,
-                value: average
-            });
-        }
-
-        console.log(`Data Filtered: x[${x}] y[${y}]`);
-        console.log(dataMap);
     }
 
     /**

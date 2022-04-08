@@ -28,18 +28,17 @@
 """
 
 import csv
+from turtle import title
 
 # Input file location
-input = './Data/movies.csv'
-# Value to split by
-value = 'years'
-# Output location of the new files
-output = './Data/'+value.capitalize()+'/'
+input = ['./Data/amazon_prime_titles.csv', 
+    './Data/disney_plus_titles.csv',
+    './Data/hulu_titles.csv',
+    './Data/netflix_titles.csv']
+output = './Data/Imdb-'
 
 # Keep a record of the field names in the original file
-field_names = []
-# Dictionary to hold all the movies by genre
-columnDict = {}
+titles = []
 
 """
     Opens the input file
@@ -48,42 +47,54 @@ columnDict = {}
 
     encoding on the input file taken as Latin1
 """
-with open(input, mode='r', encoding="Latin1") as file:
-    # create a csv dictionary reader object and keep track of line count
-    csv_reader = csv.DictReader(file)
-    line_count = 0
+"""
+for sources in input: 
+    with open(sources, mode='r', encoding="Latin1") as file:
+        # create a csv dictionary reader object and keep track of line count
+        csv_reader = csv.DictReader(file)
+        line_count = 0
 
-    # for each movie, put it into the correct key value pair in genre dictionary
-    for row in csv_reader:
-        # get the field names from the first row in the csv
-        if line_count == 0:
-            field_names = csv_reader.fieldnames
+        # for each movie, put it into the correct key value pair in genre dictionary
+        for row in csv_reader:
+            # get the field names from the first row in the csv
+            if line_count == 0:
+                field_names = csv_reader.fieldnames
+                line_count += 1
+
+            if row['title'] not in titles :
+                titles.append(row['title'])
+            
             line_count += 1
 
-        current = row[value][row[value].find('/')+1:]
-        # if the current movies genre doesnt exist in dictionary, add it
-        if(current not in columnDict):
-            columnDict[current] = [row]
-        # add movie to appropriate area in the dictionary
-        columnDict[current].append(row)
+        # Output to terminal the results of parsing input file
+        print(f'Processed {line_count} lines.')
+        print(f'Field names are: {field_names}')
+        print(f'Values gathered {titles}.')
+print('TITLES SCRAPED FROM STREAMING')
+
+with open('./Data/Imdb/Imdb_Titles.tsv', mode='r', encoding="UTF-8") as file:
+    tsv_reader = csv.reader(file, delimiter="\t")
+    line_count = 0
+
+    for row in tsv_reader:
+        if line_count == 0:
+            line_count += 1
+
+        if row[2] in titles:
+            if(line_count < 13000):
+                title_ids1.append(row[0])
+            if(line_count < 13000):
+                title_ids2.append(row[0])
+            if(line_count < 13000):
+                title_ids3.append(row[0])
         line_count += 1
 
-    # Output to terminal the results of parsing input file
+    print(f'Values gathered {title_ids1}.')
+    print(f'Values gathered {title_ids2}.')
+    print(f'Values gathered {title_ids3}.')
     print(f'Processed {line_count} lines.')
-    print(f'Field names are: {field_names}')
-    print(f'Values gathered {columnDict.keys()}.')
+"""
 
-"""
-    Loops through the dictionary
-    Creates csv files for each of the genres
-    Adds movies to the newly created csv files based on genre
-"""
-for column in columnDict:
-    print(f'Writing movies in genre: {column}')
-    with open(output + column + '.csv', mode='w', encoding="Latin1") as file:
-        writer = csv.DictWriter(file, fieldnames=field_names)
-        # write the header into the new file
-        writer.writeheader()
-        # write all the movies in the genres value pair
-        for row in columnDict[column]:
-            writer.writerow(row)
+import imdb
+ia = imdb.Cinemagoer()
+print(ia.get_movie('Jaws'))
